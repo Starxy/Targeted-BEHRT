@@ -149,6 +149,22 @@ def position_idx(tokens, symbol='SEP'):
 
 
 def age_vocab(max_age, year=False, symbol=None):
+    """创建年龄词汇表映射字典
+    
+    Args:
+        max_age (int): 最大年龄,如110
+        year (bool, optional): 是否以年为单位. 默认为False,表示以月为单位
+        symbol (list, optional): 特殊标记列表. 默认为['PAD', 'UNK']
+        
+    Returns:
+        tuple: 包含两个字典:
+            - age2idx: 年龄字符串到索引的映射,如 {'PAD':0, 'UNK':1, '0':2, '1':3, ...}
+            - idx2age: 索引到年龄字符串的映射,如 {0:'PAD', 1:'UNK', 2:'0', 3:'1', ...}
+            
+    Example:
+        >>> ageVocab, _ = age_vocab(max_age=110, year=False, symbol=None)
+        创建最大年龄为110岁、以月为单位的年龄词汇表
+    """
     age2idx = {}
     idx2age = {}
     if symbol is None:
